@@ -18,10 +18,10 @@ Build a map-based application, which lets the user see geo-based data on a map a
 
 ## My project
 
-Fill in (either in English, or in Slovak):
+**Application description**: 
 
-**Application description**: `<fill in>`
+A web application showing nearbay parking lots in the city Bratislava. The parking lots will be sorted by distance to user in the sidebar. The size if parking areas are indicated by the size of the landmark on the map. User can filter parking lots by distance or size.
 
-**Data source**: `<fill in>`
+**Data source**: [Open Street Maps](https://www.openstreetmap.org/)
 
-**Technologies used**: `<fill in>`
+**Technologies used**: ReactJS, NodeJS, PostGIS
