@@ -20,7 +20,8 @@ Build a map-based application, which lets the user see geo-based data on a map a
 
 **Application description**: 
 
-A web application showing nearbay parking lots in the city Bratislava. The parking lots will be sorted by distance to user in the sidebar. The size if parking areas are indicated by the size of the landmark on the map. User can filter parking lots by distance or size.
+A web application showing nearbay parking lots in the Bratislava city and nearbay neighbourhood. The parking lots will be sorted by distance to the user in the sidebar. The size of parking areas are indicated by the size of the landmark on the map. User can filter parking lots by distance or size.
+A user can hihglight the shortest route to the choosen parking lot.
 
 **Data source**: [Open Street Maps](https://www.openstreetmap.org/)
 
