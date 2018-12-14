@@ -20,9 +20,11 @@ Build a map-based application, which lets the user see geo-based data on a map a
 
 **Application description**: 
 
-A web application showing nearbay parking lots in the Bratislava city and nearbay neighbourhood. The parking lots will be sorted by distance to the user in the sidebar. The size of parking areas are indicated by the size of the landmark on the map. User can filter parking lots by distance or size.
-A user can hihglight the shortest route to the choosen parking lot.
+A web application showing nearbay parking lots in the London city and its neighbourhood. 
+The user can filter parking lots according to distance, region or limit. 
+The application also show a heatmap of car_accidents in centre of the city. 
+User can also filter parking lots based on proximity to the nearbay car accidents.
 
 **Data source**: [Open Street Maps](https://www.openstreetmap.org/)
 
-**Technologies used**: ReactJS, NodeJS, PostGIS
+**Technologies used**: Php, Lumen, JS, PostGIS, Leaflet, MapBox
