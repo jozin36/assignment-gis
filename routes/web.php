@@ -102,6 +102,36 @@ $router->get('get_accidents', function (Request $request) use ($router, $default
     $query = "SELECT longitude, latitude, Number_of_Casualties from car_accidents 
               WHERE ST_DistanceSphere(geom_data, ST_SetSRID(ST_GeomFromText('POINT($default_location)'), 4326)) < 30000";
 
+
+    $query = "
+        SELECT
+        kmeans_cid,
+        count(*), st_asgeojson(ST_Centroid(ST_Collect(geom_data)))
+        FROM (
+            SELECT
+            ST_ClusterKMeans(geom_data, 2000) OVER () kmeans_cid,
+            geom_data
+            FROM accidents
+        ) kmeans GROUP BY kmeans_cid;
+    ";
+
     $results = DB::select($query);
-    return $results;
+    return parse_geo_json($results);
+});
+
+$router->get('save_parking', function (Request $request) use ($router, $default_location){
+
+    $query = "
+    with accidents as (
+	SELECT * from car_accidents  
+	WHERE ST_DistanceSphere(geom_data, ST_SetSRID(ST_GeomFromText('POINT(-0.15206 51.49732)'), 4326)) <= 1000
+    ) 
+    SELECT st_asgeojson(p.geom_data), p.osm_id, count(c.gid) as pocet from planet_osm_polygon p 
+    LEFT JOIN accidents c on (ST_DistanceSphere(p.geom_data, c.geom_data) < 50)
+    WHERE p.amenity = 'parking' and ST_DistanceSphere(p.geom_data, ST_SetSRID(ST_GeomFromText('POINT(-0.15206 51.49732)'), 4326)) <= 1000
+    group by p.geom_data, p.osm_id order by pocet asc limit 10;
+    ";
+
+    $results = DB::select($query);
+    return parse_geo_json($results);
 });
