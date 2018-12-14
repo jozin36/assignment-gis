@@ -85,7 +85,7 @@
     </div>
 
     <div class="label">
-        <button type="button" class="button" id="save_parking">Parkoviská bez nehôd</button>
+        <button type="button" class="button" id="safe_parking">Parkoviská bez nehôd</button>
     </div>
 
     <div class="horzintal_space">
@@ -189,9 +189,9 @@
         });
     });
 
-    $("#save_parking").click(function(){
+    $("#safe_parking").click(function(){
         $.ajax({
-            url: "/postgis_data/save_parking",
+            url: "/postgis_data/safe_parking",
             success: function( result ) {
                 show_plogyons_on_map(result)
             }

@@ -25,6 +25,7 @@ The user can filter parking lots according to distance, region or limit.
 The application also show a heatmap of car_accidents in centre of the city. 
 User can also filter parking lots based on proximity to the nearbay car accidents.
 
-**Data source**: [Open Street Maps](https://www.openstreetmap.org/)
+**Data sources**: [Open Street Maps](https://www.openstreetmap.org/), 
+[Kaggle](https://www.kaggle.com/silicon99/dft-accident-data#Accidents0515.csv)
 
 **Technologies used**: Php, Lumen, JS, PostGIS, Leaflet, MapBox

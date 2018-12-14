@@ -14,15 +14,11 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+ // London
 $default_location = '-0.15206 51.49732';
 
 $router->get('/', function () use ($router) {
     return redirect('/page');
-});
-
-$router->get('test_query', function () use ($router) {
-    $results = DB::select("SELECT * FROM planet_osm_polygon t WHERE t.name = 'Bratislava'");
-    return $results;
 });
 
 function parse_geo_json($data){
@@ -98,11 +94,6 @@ $router->get('get_regions',  function (Request $request) use ($router) {
 });
 
 $router->get('get_accidents', function (Request $request) use ($router, $default_location){
-
-    $query = "SELECT longitude, latitude, Number_of_Casualties from car_accidents 
-              WHERE ST_DistanceSphere(geom_data, ST_SetSRID(ST_GeomFromText('POINT($default_location)'), 4326)) < 30000";
-
-
     $query = "
         SELECT
         kmeans_cid,
@@ -119,7 +110,7 @@ $router->get('get_accidents', function (Request $request) use ($router, $default
     return parse_geo_json($results);
 });
 
-$router->get('save_parking', function (Request $request) use ($router, $default_location){
+$router->get('safe_parking', function (Request $request) use ($router, $default_location){
 
     $query = "
     with accidents as (
